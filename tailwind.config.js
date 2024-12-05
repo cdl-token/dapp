@@ -8,8 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#AF52DE",
+        custom: {
+          bg: "#060606",
+        },
+      },
+      fontFamily: {
+        neue: ["var(--font-neue-machina)"],
+        apfel: ["var(--font-apfel)"],
       },
     },
   },
