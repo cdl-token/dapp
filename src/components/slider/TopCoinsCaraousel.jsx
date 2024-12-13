@@ -10,7 +10,7 @@ import Image from "next/image";
 
 const TopCoinsCaraousel = () => {
   return (
-    <div className="bg-red-200 w-[1490px]">
+    <div className="w-[1490px]">
       <Carousel
         opts={{
           loop: true,
@@ -22,39 +22,165 @@ const TopCoinsCaraousel = () => {
         ]}
       >
         <CarouselContent>
-          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px]">
-            <div
-              className="rounded-2xl w-full h-full bg-black/20"
-              style={{
-                background: `
-                radial-gradient(100% 100% at 0% 0%, #000000 7.61%, #A3A3A3 57.81%, #000000 100%), 
-                conic-gradient(from 180deg at 50% 50%, #2C9543 0deg, #77ED91 16.88deg, #77ED91 88.12deg, 
-                #77ED91 151.87deg, #77EDB4 225deg, #7EFF9B 288.75deg, #2C9543 360deg)
-              `,
-                backgroundBlendMode: "screen",
-              }}
-            >
-              <div className="flex bg-black/30">
-                <Image
-                  src="/slider/graph.svg"
-                  width={360}
-                  height={201}
-                  alt="graph"
-                />
+          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px] max-w-[calc(100vw-20px)]">
+            <div className="rounded-[34px] w-full h-full bg-custom-darkgray">
+              <div
+                className="w-full h-full flex flex-col justify-between p-4"
+                style={{
+                  background: "url(/slider/graph.svg)",
+                  backgroundPosition: "bottom",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <div className="flex flex-col">
+                  <Image
+                    src="/slider/coins/shiba-inu.svg"
+                    width={48}
+                    height={48}
+                    alt="shiba inu"
+                  />
+                  <span className="text-custom-gray mt-2">ShibaInu</span>
+                  <span className="text-[28px] font-semibold">$ 0.0008827</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-custom-green2 text-[28px]">
+                    +660991%
+                  </span>
+                  <span className="text-custom-gray/50 font-light">
+                    All time
+                  </span>
+                </div>
               </div>
             </div>
           </CarouselItem>
-          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px]">
-            <div className="rounded-2xl w-full h-full bg-black/20"></div>
+          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px] max-w-[calc(100vw-20px)]">
+            <div className="rounded-[34px] w-full h-full bg-custom-darkgray">
+              <div
+                className="w-full h-full flex flex-col justify-between p-4"
+                style={{
+                  background: "url(/slider/graph.svg)",
+                  backgroundPosition: "bottom",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <div className="flex flex-col">
+                  <Image
+                    src="/slider/coins/shiba-inu.svg"
+                    width={48}
+                    height={48}
+                    alt="shiba inu"
+                  />
+                  <span className="text-custom-gray mt-2">ShibaInu</span>
+                  <span className="text-[28px] font-semibold">$ 0.0008827</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-custom-green2 text-[28px]">
+                    +660991%
+                  </span>
+                  <span className="text-custom-gray/50 font-light">
+                    All time
+                  </span>
+                </div>
+              </div>
+            </div>
           </CarouselItem>
-          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px]">
-            <div className="rounded-2xl w-full h-full bg-black/20"></div>
+          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px] max-w-[calc(100vw-20px)]">
+            <div className="rounded-[34px] w-full h-full bg-custom-darkgray">
+              <div
+                className="w-full h-full flex flex-col justify-between p-4"
+                style={{
+                  background: "url(/slider/graph.svg)",
+                  backgroundPosition: "bottom",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <div className="flex flex-col">
+                  <Image
+                    src="/slider/coins/shiba-inu.svg"
+                    width={48}
+                    height={48}
+                    alt="shiba inu"
+                  />
+                  <span className="text-custom-gray mt-2">ShibaInu</span>
+                  <span className="text-[28px] font-semibold">$ 0.0008827</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-custom-green2 text-[28px]">
+                    +660991%
+                  </span>
+                  <span className="text-custom-gray/50 font-light">
+                    All time
+                  </span>
+                </div>
+              </div>
+            </div>
           </CarouselItem>
-          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px]">
-            <div className="rounded-2xl w-full h-full bg-black/20"></div>
+          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px] max-w-[calc(100vw-20px)]">
+            <div className="rounded-[34px] w-full h-full bg-custom-darkgray">
+              <div
+                className="w-full h-full flex flex-col justify-between p-4"
+                style={{
+                  background: "url(/slider/graph.svg)",
+                  backgroundPosition: "bottom",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <div className="flex flex-col">
+                  <Image
+                    src="/slider/coins/shiba-inu.svg"
+                    width={48}
+                    height={48}
+                    alt="shiba inu"
+                  />
+                  <span className="text-custom-gray mt-2">ShibaInu</span>
+                  <span className="text-[28px] font-semibold">$ 0.0008827</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-custom-green2 text-[28px]">
+                    +660991%
+                  </span>
+                  <span className="text-custom-gray/50 font-light">
+                    All time
+                  </span>
+                </div>
+              </div>
+            </div>
           </CarouselItem>
-          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px]">
-            <div className="rounded-2xl w-full h-full bg-black/20"></div>
+          <CarouselItem className="basis-1/3 flex items-center justify-center pl-5 w-full h-[300px] max-w-[calc(100vw-20px)]">
+            <div className="rounded-[34px] w-full h-full bg-custom-darkgray">
+              <div
+                className="w-full h-full flex flex-col justify-between p-4"
+                style={{
+                  background: "url(/slider/graph.svg)",
+                  backgroundPosition: "bottom",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <div className="flex flex-col">
+                  <Image
+                    src="/slider/coins/shiba-inu.svg"
+                    width={48}
+                    height={48}
+                    alt="shiba inu"
+                  />
+                  <span className="text-custom-gray mt-2">ShibaInu</span>
+                  <span className="text-[28px] font-semibold">$ 0.0008827</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-custom-green2 text-[28px]">
+                    +660991%
+                  </span>
+                  <span className="text-custom-gray/50 font-light">
+                    All time
+                  </span>
+                </div>
+              </div>
+            </div>
           </CarouselItem>
         </CarouselContent>
       </Carousel>
