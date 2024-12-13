@@ -11,7 +11,7 @@ const Topbar = () => {
     year: "numeric",
   });
   return (
-    <div className="p-5 flex justify-between md:max-w-[calc(100vw-300px)] w-full items-center fixed pr-5 top-4">
+    <div className="flex justify-between md:max-w-[calc(100vw-300px)] w-full items-center pr-5 pl-3 py-8 top-4">
       <div className="flex flex-col">
         <span className="text-[28px] font-neue">Dashboard</span>
         <span className="text-[#909093] text-xs">
