@@ -16,8 +16,8 @@ export default function CoinCard({
 }) {
   return (
     <Link
-      href={`/${lang}/staking/${symbol}`}
-      className="w-full rounded-2xl gap-1 bg-ash p-3 flex flex-col items-center justify-center hover:border-primary border border-custom-gray/20 transition-all ease-in duration-300 cursor-pointer"
+      href={`/staking/${symbol}`}
+      className="w-full rounded-2xl gap-1 bg-custom-darkgray p-3 flex flex-col items-center justify-center hover:border-primary border border-custom-gray/20 transition-all ease-in duration-300 cursor-pointer"
     >
       <Image src={imgUrl} width={40} height={40} quality={100} alt="coin" />
       <span className="uppercase text-white/50">{symbol}</span>

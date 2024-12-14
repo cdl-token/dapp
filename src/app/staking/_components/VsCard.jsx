@@ -19,7 +19,7 @@ export default function VsCard() {
             <span>SOLUTIONS</span>
           </div>
           <p className="text-sm text-gray2 text-center max-w-sm">
-            Experience the power of LNBG's automated investment management.{" "}
+            Experience the power of CDL's automated investment management.{" "}
             <span className="text-white">
               One click solutions offer effortless optimization,
             </span>{" "}
@@ -64,16 +64,16 @@ export default function VsCard() {
 const CardOne = () => {
   return (
     <div className="relative flex items-center justify-center pt-10 mt-10">
-      <div className="text-gray2/75 absolute top-10 -left-28 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
-        LNBG Powered <br /> management
+      <div className="text-gray2/75 absolute top-0 sm:top-10 -left-6 sm:-left-28 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
+        CDL Powered <br /> management
       </div>
-      <div className="text-gray2/75 absolute top-0 right-0 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
+      <div className="text-gray2/75 absolute top-10 sm:top-0 -right-5 sm:right-0 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
         Automatic <br /> rebalancing
       </div>
-      <div className="text-gray2/75 absolute bottom-0 -left-10 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
+      <div className="text-gray2/75 absolute bottom-10 sm:bottom-0 -left-3 sm:-left-10 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
         Optimized <br /> yields
       </div>
-      <div className="text-gray2/75 absolute top-32 -right-12 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
+      <div className="text-gray2/75 absolute sm:top-32 -right-8 sm:-right-12 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
         Hands-off <br /> approach
       </div>
       <div className="max-w-[250px] w-[65vw] rounded-lg bg-custom-darkgray p-3 -rotate-12 flex items-center justify-center flex-col gap-1">
@@ -95,7 +95,7 @@ const CardOne = () => {
               "0 0 5px #ffba00, 0 0 10px #ffba00, 0 0 15px #FFFc54, 0 0 20px #FFFc54",
           }}
         >
-          LNBG CONTROL
+          CDL CONTROL
         </div>
         <div className="p-2 rounded-xl border w-full border-white/20 flex flex-col items-center gap-2">
           <div className="flex w-full items-baseline gap-1">
@@ -158,7 +158,7 @@ const CardOne = () => {
 const CardTwo = () => {
   return (
     <div className="relative flex items-center justify-center pt-10 mt-10">
-      <div className="text-gray2/75 absolute top-10 -right-28 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
+      <div className="text-gray2/75 absolute top-10 -right-5 sm:-right-28 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
         Diverse <br /> strategies
       </div>
       <div className="text-gray2/75 absolute top-0 -left-6 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
@@ -167,7 +167,7 @@ const CardTwo = () => {
       <div className="text-gray2/75 absolute bottom-0 -right-10 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
         Active and <br /> passive options
       </div>
-      <div className="text-gray2/75 absolute top-32 -left-24 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
+      <div className="text-gray2/75 absolute top-52 sm:top-32 -left-8 sm:-left-24 p-2 rounded-md z-10 border-ash border text-lg leading-5 w-fit font-bold bg-[#1C1C1B] text-center">
         Customizable <br /> choices
       </div>
       <div className="max-w-[250px] w-[65vw] rounded-lg bg-custom-darkgray p-3 rotate-12 flex items-center justify-center flex-col gap-1">
@@ -189,7 +189,7 @@ const CardTwo = () => {
               "0 0 5px #ffba00, 0 0 10px #ffba00, 0 0 15px #FFFc54, 0 0 20px #FFFc54",
           }}
         >
-          LNBG CONTROL
+          CDL CONTROL
         </div>
         <div className="p-2 rounded-xl border w-full border-white/20 flex flex-col items-center gap-2">
           <div className="flex w-full items-baseline gap-1">

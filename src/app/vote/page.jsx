@@ -65,7 +65,7 @@ export default function VotingPage({ params }) {
           {/* {masterContractProposalData.map((proposal, index) => (
             <Link
               href={`/vote/${index}`}
-              className="bg-ash px-5 py-4 hover:border-primary border-b-2 transition-all ease-in duration-300 grid grid-cols-1 md:grid-cols-[6fr_2fr_2fr] gap-3 md:gap-10 border-coal relative"
+              className="bg-custom-darkgray px-5 py-4 hover:border-primary border-b-2 transition-all ease-in duration-300 grid grid-cols-1 md:grid-cols-[6fr_2fr_2fr] gap-3 md:gap-10 border-coal relative"
               key={index}
             >
               <div className="flex flex-col justify-between w-full">
