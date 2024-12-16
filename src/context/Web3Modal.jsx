@@ -42,10 +42,10 @@ const seoiliaTestnet = {
 
 // 3. Create modal
 const metadata = {
-  name: 'Lnbg London Coin',
-  description: 'This is Lnbg London Coin',
-  url: 'https://Lnbg.com/', // origin must match your domain & subdomain
-  icons: ['https://Lnbg.com']
+  name: 'Crypto Data Live',
+  description: 'This is Crypto Data Live',
+  url: 'https://Cdl.com/', // origin must match your domain & subdomain
+  icons: ['https://Cdl.com']
 }
 
 // 4. Create Ethers config

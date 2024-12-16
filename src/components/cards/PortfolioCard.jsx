@@ -46,35 +46,35 @@ const PortfolioCard = () => {
         {threeDots}
       </div>
       <div className="flex flex-col border-t-2 border-black">
-        {tokenData.map((token) => (
+        {tokenData?.map((token) => (
           <div className="flex items-center gap-3 border-b-[0.5px] border-black px-4 py-3">
             <div className="flex items-center justify-center h-[48px] w-[48px] rounded-full bg-black">
               <Image
-                src={token.image}
+                src={token?.image}
                 width={17}
                 height={22.5}
-                alt={token.name}
+                alt={token?.name}
               />
             </div>
             <div className="flex flex-col flex-grow justify-between">
               <span className="text-[19px] font-semibold text-[#E1E1E1]">
-                {token.name}
+                {token?.name}
               </span>
-              <span className="uppercase">{token.symbol}</span>
+              <span className="uppercase">{token?.symbol}</span>
             </div>
             <div className="flex flex-col justify-between items-center">
               <span className="text-[19px] font-bold text-[#E1E1E1]">
-                {token.percentage}%
+                {token?.percentage}%
               </span>
               <span
                 className={cn(
                   "bg-black px-2 py-0.5 rounded-full text-xs",
-                  token.plusPercentage > 0 ? "text-[#1DD6B4]" : "text-[#F46D22]"
+                  token?.plusPercentage > 0 ? "text-[#1DD6B4]" : "text-[#F46D22]"
                 )}
               >
-                {token.plusPercentage > 0
-                  ? "+" + token.plusPercentage
-                  : token.plusPercentage}
+                {token?.plusPercentage > 0
+                  ? "+" + token?.plusPercentage
+                  : token?.plusPercentage}
                 %
               </span>
             </div>

@@ -14,7 +14,7 @@ export default function BridgeInfo() {
         <div className="w-[12px]">
           <Dot size={12} />
         </div>
-        The yield from these decentralized protocols is passed back to LNBG
+        The yield from these decentralized protocols is passed back to CDL
         users automatically.
       </div>
       <div className="flex w-full items-baseline gap-3 text-lg">

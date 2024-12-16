@@ -20,17 +20,17 @@ export default function VaultSection() {
           name="USDT"
           apy={6.01}
           tvl={2.0}
-          provider="$CDL"
+          provider="CDL"
           trustScore={8.1}
           indicator="81"
         />
         <CoinCard
           imgUrl="/coins/bnb.svg"
           symbol="cdl"
-          name="$CDL"
+          name="CDL"
           apy={5.4}
           tvl={2.0}
-          provider="$CDL"
+          provider="CDL"
           trustScore={8.3}
           indicator="83"
         />
@@ -40,7 +40,7 @@ export default function VaultSection() {
           name="USDC"
           apy={6.14}
           tvl={2.0}
-          provider="$CDL"
+          provider="CDL"
           trustScore={9.1}
           indicator="91"
         />

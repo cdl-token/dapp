@@ -20,7 +20,7 @@ export default function StakingCard({ slug }) {
   }, []);
   // ----------------------------------------------------
 
-  const selectedToken = slug === "lnbg" ? "$CDL" : slug.toUpperCase();
+  const selectedToken = slug === "cdl" ? "CDL" : slug.toUpperCase();
   const { address, isConnected } = useWeb3ModalAccount();
   const [tab, setTab] = useState("Stake");
   const [selectedOffer, setSelectedOffer] = useState("12 months");
@@ -152,7 +152,7 @@ export default function StakingCard({ slug }) {
                   className="ml-1"
                   alt="CDL"
                   src={
-                    slug === "lnbg"
+                    slug === "cdl"
                       ? "/logo.png"
                       : `/coins/${slug}.svg`
                   }
@@ -245,7 +245,7 @@ export default function StakingCard({ slug }) {
             </div>
             <div
               onClick={() => {
-                router.push(`/staking/lnbg`);
+                router.push(`/staking/cdl`);
                 setDropdownOpen(false);
               }}
               className="flex items-center gap-2 cursor-pointer"

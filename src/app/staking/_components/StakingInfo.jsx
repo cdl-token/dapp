@@ -8,13 +8,13 @@ export default function StakingInfo() {
         <div className="w-[12px]">
           <Dot size={12} />
         </div>
-        Locked CDL is a special token that is pegged to the $CDL token rate.
+        Locked CDL is a special token that is pegged to the CDL token rate.
       </div>
       <div className="flex w-full items-baseline gap-3 text-lg">
         <div className="w-[12px]">
           <Dot size={12} />
         </div>
-        Locked CDL will be distributed to all $CDL holders on the CDL network
+        Locked CDL will be distributed to all CDL holders on the CDL network
         based on the snapshot of balances from May 31, 2024.
       </div>
       <div className="flex w-full items-baseline gap-3 text-lg">
@@ -42,7 +42,7 @@ export default function StakingInfo() {
         <div className="w-[12px]">
           <Dot size={12} />
         </div>
-        At the TGE, you can convert Locked CDL tokens to $CDL tokens at a 1:1
+        At the TGE, you can convert Locked CDL tokens to CDL tokens at a 1:1
         ratio.
       </div>
     </div>

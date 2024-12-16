@@ -29,18 +29,18 @@ export default function ClaimPage() {
             >
               <div className="flex w-full flex-col bg-black/30 items-center justify-center gap-5 rounded-xl py-20 text-center">
                 <span className="text-3xl px-2 sm:text-5xl font-semibold uppercase lg:text-6xl">
-                  Prepare for the LNBG Token
+                  Prepare for the CDL Token
                   <br /> Distribution Event
                 </span>
                 <Timer />
                 <span className="px-5 text-xl font-semibold max-w-2xl uppercase">
                   We're approaching a monumental moment in our journey, and we
                   can't wait to share this with our incredible community! The
-                  LNBG Token Distribution Event is right around the corner,
+                  CDL Token Distribution Event is right around the corner,
                   marking a significant milestone for our project.
                 </span>
                 <span className="px-5 text-lg font-medium max-w-2xl text-white/80">
-                  Get ready to claim and trade your $LLC tokens! Once the
+                  Get ready to claim and trade your CDL tokens! Once the
                   presale ends, the referral and airdrop token distribution will
                   begin, opening up exciting opportunities for everyone
                   involved. Keep a close eye on the countdown—this is your

@@ -10,6 +10,7 @@ import { Store } from "@/context/Store";
 import { toast } from "react-toastify";
 
 export default function BridgeCard() {
+  
   // --------------For hydration error-------------------
   const [isClient, setIsClient] = useState(false);
 
