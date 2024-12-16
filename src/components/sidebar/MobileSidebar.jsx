@@ -53,11 +53,14 @@ const MobileSidebar = () => {
               <NavLink icon={claimIcon} title="Claim" href="/claim" />
             </div>
             <div className="h-full w-full flex flex-col text-sm gap-2 justify-end pb-10 font-neue">
-              <Link className="hover:underline" href="/support">
-                Support
+              <Link className="hover:underline" href="/static/whitepaper.pdf">
+                Whitepaper
               </Link>
-              <Link className="hover:underline" href="/">
-                Docs
+              <Link
+                className="hover:underline"
+                href="https://cdl-token.gitbook.io/cdl-token/"
+              >
+                Lightpaper
               </Link>
               <div className="flex items-center gap-4 pt-2">
                 <Link href="#">{XIcon}</Link>
