@@ -42,11 +42,11 @@ const MobileSidebar = () => {
             </div>
             <div className="flex flex-col gap-1">
               <NavLink icon={dashboardIcon} title="Dashboard" href="/" />
-              <NavLink
+              {/* <NavLink
                 icon={portfolioIcon}
                 title="Portfolio"
                 href="/portfolio"
-              />
+              /> */}
               <NavLink icon={stakingIcon} title="Staking" href="/staking" />
               <NavLink icon={voteIcon} title="Vote" href="/vote" />
               <NavLink icon={bridgeIcon} title="Bridge" href="/bridge" />
