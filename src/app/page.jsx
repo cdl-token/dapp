@@ -1,6 +1,7 @@
 import PortfolioCard from "@/components/cards/PortfolioCard";
 import RecentlyAdded from "@/components/cards/RecentlyAdded";
 import TrendingCard from "@/components/cards/TrendingCard";
+import MainPageGraph from "@/components/graph/MainPageGraph";
 import TopCoinsCaraousel from "@/components/slider/TopCoinsCaraousel";
 import Image from "next/image";
 
@@ -17,7 +18,7 @@ export default function Home() {
       <div className="flex flex-col sm:flex-row gap-3 py-5">
         <PortfolioCard />
         <div className="w-full bg-blue-200/5 rounded-3xl text-xl font-bold uppercase p-5 flex items-center justify-center">
-          CHART HERE
+          <MainPageGraph />
         </div>
       </div>
       <div className="flex flex-col gap-5 overflow-hidden">
