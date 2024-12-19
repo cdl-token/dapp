@@ -3,6 +3,7 @@ import "./globals.css";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { cn } from "@/lib/utils";
 import Topbar from "@/components/topbar/Topbar";
+import PreloaderProvider from "./PreloaderProvider";
 
 const neueMachinaFont = localFont({
   src: [
@@ -46,11 +47,15 @@ export default function RootLayout({ children }) {
           apfelFont.variable
         )}
       >
-        <Sidebar />
-        <div className="flex flex-col w-full min-h-screen md:max-w-[calc(100vw-300px)] relative">
-          <Topbar />
-          {children}
-        </div>
+        <PreloaderProvider>
+          <>
+            <Sidebar />
+            <div className="flex flex-col w-full min-h-screen md:max-w-[calc(100vw-300px)] relative">
+              <Topbar />
+              {children}
+            </div>
+          </>
+        </PreloaderProvider>
       </body>
     </html>
   );
