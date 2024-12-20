@@ -22,7 +22,6 @@ export async function GET(req) {
     }
 
     const data = await response.text();
-    console.log("DATA", data);
     return NextResponse.json(JSON.parse(data));
   } catch (error) {
     console.error("Error fetching data:", error.message);

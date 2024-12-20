@@ -1,44 +1,10 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import React from "react";
 
-const PortfolioCard = () => {
-  const tokenData = [
-    {
-      name: "Bitcoin",
-      symbol: "btc",
-      percentage: 37,
-      plusPercentage: 2.5,
-      image: "/portfolio/bitcoin.svg",
-    },
-    {
-      name: "Litecoin",
-      symbol: "lte",
-      percentage: 23,
-      plusPercentage: -3.5,
-      image: "/portfolio/litecoin.svg",
-    },
-    {
-      name: "Solana",
-      symbol: "sol",
-      percentage: 20,
-      plusPercentage: -1.5,
-      image: "/portfolio/solana.svg",
-    },
-    {
-      name: "Ripple",
-      symbol: "xla",
-      percentage: 17,
-      plusPercentage: 3.5,
-      image: "/portfolio/ripple.svg",
-    },
-    {
-      name: "Ethereum",
-      symbol: "eth",
-      percentage: 20,
-      plusPercentage: 2.5,
-      image: "/portfolio/ethereum.svg",
-    },
-  ];
+const PortfolioCard = ({ data }) => {
   return (
     <div className="flex flex-col min-w-[258px] w-full sm:w-fit bg-[#8D33E5] text-white rounded-[24px]">
       <div className="px-4 py-3 flex items-center justify-between">
@@ -46,9 +12,12 @@ const PortfolioCard = () => {
         {threeDots}
       </div>
       <div className="flex flex-col border-t-2 border-black">
-        {tokenData?.map((token) => (
-          <div className="flex items-center gap-3 border-b-[0.5px] border-black px-4 py-3">
-            <div className="flex items-center justify-center h-[48px] w-[48px] rounded-full bg-black">
+        {data?.map((token) => (
+          <div
+            key={token.id}
+            className="flex items-center gap-3 border-b-[0.5px] border-black px-4 py-3"
+          >
+            <div className="flex items-center justify-center min-h-[48px] min-w-[48px] h-[48px] w-[48px] rounded-full bg-black">
               <Image
                 src={token?.image}
                 width={17}
@@ -69,7 +38,9 @@ const PortfolioCard = () => {
               <span
                 className={cn(
                   "bg-black px-2 py-0.5 rounded-full text-xs",
-                  token?.plusPercentage > 0 ? "text-[#1DD6B4]" : "text-[#F46D22]"
+                  token?.plusPercentage > 0
+                    ? "text-[#1DD6B4]"
+                    : "text-[#F46D22]"
                 )}
               >
                 {token?.plusPercentage > 0

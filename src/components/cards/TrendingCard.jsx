@@ -1,32 +1,11 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const TrendingCard = () => {
-  const trendingTokens = [
-    {
-      id: 1,
-      icon: "/usdt.svg",
-      title: "Tether",
-      symbol: "usdt",
-      percentage: 0.04,
-    },
-    {
-      id: 2,
-      icon: "/uniswap.svg",
-      title: "Uniswap",
-      symbol: "uni",
-      percentage: 2.3,
-    },
-    {
-      id: 3,
-      icon: "/wazir.svg",
-      title: "Wazirx",
-      symbol: "wrx",
-      percentage: -0.06,
-    },
-  ];
+const TrendingCard = ({ data }) => {
   return (
     <div className="rounded-[24px] bg-custom-darkgray px-4 py-3 flex flex-col">
       <div className="flex w-full items-center justify-between">
@@ -39,22 +18,22 @@ const TrendingCard = () => {
         </Link>
       </div>
       <div className="flex flex-col gap-1.5 pt-5 pb-8">
-        {trendingTokens.map((token, index) => (
+        {data.map((token, index) => (
           <div
-            key={index}
+            key={token.id}
             className="rounded-full bg-custom-gray2 w-full flex px-4 py-3 items-center"
           >
             <div className="flex items-center gap-2 w-full">
-              <span>{token.id}</span>
+              <span>{index + 1}</span>
               <Image
-                src={token.icon}
+                src={token.image} // Updated to use the correct prop for the image
                 className="pt-1"
                 width={20}
                 height={18}
-                alt="usdt"
+                alt={token.symbol}
               />
               <div className="flex items-baseline gap-1">
-                <span className="">{token.title}</span>
+                <span className="">{token.name}</span>
                 <span className="text-custom-gray text-sm uppercase">
                   {token.symbol}
                 </span>
