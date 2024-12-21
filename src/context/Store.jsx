@@ -137,16 +137,6 @@ export const StoreProvider = ({ children }) => {
     const getAllUsersClaimedTokens =
       await getProviderStakingContract().totalClaimedTokens();
 
-    console.log(getAllUsersEarnedTokens?.toString(), "getAllUsersEarnedTokens");
-    console.log(
-      getAllUsersClaimedTokens?.toString(),
-      "getAllUsersClaimedTokens"
-    );
-    console.log(
-      totalStakedTokens?.toString(),
-      totalStakers?.toString(),
-      "dadasdasdddddddddddddddddddddd"
-    );
     setMasterContractData((prevState) => ({
       ...prevState,
       totalStakers: totalStakers?.toString(),
@@ -163,7 +153,6 @@ export const StoreProvider = ({ children }) => {
   };
 
   // const getStakedInfoByUser = async () => {
-  //   console.log(isConnected, address, "isConnected");
   //   if (isConnected) {
   //     const provider = new ethers.providers.Web3Provider(walletProvider);
   //     const signer = provider.getSigner();
@@ -184,7 +173,6 @@ export const StoreProvider = ({ children }) => {
   //     const USDCStaked = [];
 
   //     let TotalEarnedReward = 0;
-  //       console.log(numberOfStakes,"numberOfStakesnumberOfStakesnumberOfStakes");
   //     for (let i = 0; i < numberOfStakes?.toString(); i++) {
   //       //numberOfStakes?.length
 
@@ -193,13 +181,11 @@ export const StoreProvider = ({ children }) => {
   //         address,
   //         i
   //       );
-  //       console.log(earnedRewardTokens?.toString(),"earnedRewardTokensearnedRewardTokens");
 
   //       TotalEarnedReward += parseFloat(ethers.utils.formatEther(earnedRewardTokens?.toString()));
 
   //       // Get each stake by index
   //       const stakeInfo = await stakingContract.userStakes(address, i);
-  //       console.log(stakeInfo,"stakeInfostakeInfo");
   //       if (
   //         stakeInfo?.stakedTokenAddress?.toLowerCase() ===
   //         CdlCoinAddress?.address?.toLowerCase()
@@ -266,7 +252,6 @@ export const StoreProvider = ({ children }) => {
   // };
 
   const getStakedInfoByUser = async () => {
-    console.log(isConnected, address, "isConnected");
     if (isConnected) {
       const provider = new ethers.providers.Web3Provider(walletProvider);
       const signer = provider.getSigner();
@@ -330,21 +315,6 @@ export const StoreProvider = ({ children }) => {
           address,
           WBNBTokenAddress.address
         );
-
-        console.log(
-          WETHStaked,
-          WBNBStaked,
-          WBTCStaked,
-          "newwwwwwwwwwwwwww"
-        );
-
-        console.log("1");
-        console.log(CdlEarned?.toString(),
-USDCEarned?.toString(),
-USDTEarned?.toString(),
-WETHEarned?.toString(),
-WBNBEarned?.toString(),
-WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
         let CdlCdl = ethers.utils.formatEther(CdlEarned?.toString());
         let CdlUSDC = ethers.utils.formatEther(USDCEarned?.toString());
         let CdlUSDT = ethers.utils.formatEther(USDTEarned?.toString());
@@ -352,8 +322,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
         let CdlWBNB = ethers.utils.formatEther(WBNBEarned?.toString());
         let CdlWBTC = ethers.utils.formatEther(WBTCEarned?.toString());
 
-        console.log("2");
-        // Map the returned stakes (which are individual objects) to your state
         setStakingContractData((prevState) => ({
           ...prevState,
           WETHStaked:
@@ -411,7 +379,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
 
           TotalEarnedReward: (CdlCdl + CdlUSDC + CdlUSDT + CdlWETH + CdlWBNB + CdlWBTC),
         }));
-        console.log("3");
       } catch (error) {
         console.error("Error fetching staked info:", error);
       }
@@ -435,12 +402,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
         // Call the function to get claimed rewards for the user
         const claimedRewards = await stakingContract.claimedRewards(address);
 
-        // Convert to Ether format and display it
-        console.log(
-          `Claimed Rewards: ${ethers.utils.formatEther(claimedRewards.toString())}`,
-          claimedRewards.toString()
-        );
-
         setStakingContractData((prevState) => ({
           ...prevState,
           claimedRewards: ethers.utils.formatEther(claimedRewards.toString()),
@@ -458,7 +419,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
     if (!isConnected) {
       return toast.error("Please Connect Your Wallet."), setloader(false);
     }
-    console.log(token, "tokentokentoken");
     try {
       if (amount <= 0)
         return setloader(false), toast.error("Please enter amount");
@@ -488,14 +448,11 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       );
 
       const tokens = ethers.utils.parseEther(amount?.toString());
-      console.log(address, "addressaddress");
       let balance = await CdlContracts.balanceOf(address?.toString());
       let allow = await CdlContracts.allowance(
         address?.toString(),
         CdlStakingContractAddress?.address
       );
-
-      console.log(allow?.toString(), balance?.toString(), "allowallowallow");
 
       if (+tokens?.toString() > +balance?.toString())
         return (
@@ -508,8 +465,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
         );
 
       if (+allow?.toString() < +tokens?.toString()) {
-        console.log("condidtion True");
-
         let approve = await CdlContracts.approve(
           CdlStakingContractAddress.address,
           tokens?.toString()
@@ -526,7 +481,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       const currentTimestamp = Math.floor(Date.now() / 1000);
       const ninetyDaysInSeconds = duration * 60; // 90 days in seconds
       let days = currentTimestamp + ninetyDaysInSeconds;
-      // console.log(days, "daysdaysdays");
 
       let tokenAddress =
         token === "USDT"
@@ -553,7 +507,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       setloader(false);
     } catch (error) {
       setloader(false);
-      console.log(error);
       toast.error(`${JSON.stringify(error.reason)}`);
       return false;
     }
@@ -600,22 +553,15 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       setloader(false);
     } catch (error) {
       setloader(false);
-      console.log(error);
       toast.error(`${JSON.stringify(error.reason)}`);
     }
   };
 
   ////////////////////////////////////////  MASTER CONTRACT PROPOSAL ///////////////////////////////
-  ////////////////////////////////////////  MASTER CONTRACT PROPOSAL ///////////////////////////////
-  ////////////////////////////////////////  MASTER CONTRACT PROPOSAL ///////////////////////////////
-  ////////////////////////////////////////  MASTER CONTRACT PROPOSAL ///////////////////////////////
-  ////////////////////////////////////////  MASTER CONTRACT PROPOSAL ///////////////////////////////
-  ////////////////////////////////////////  MASTER CONTRACT PROPOSAL ///////////////////////////////
 
   const submitProposal = async (data) => {
     setloader(true);
     if (!isConnected) {
-      console.log(data, "datadata");
       return toast.error("Please Connect Your Wallet."), setloader(false);
     }
     try {
@@ -626,8 +572,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
         CdlMasterContract.abi,
         signer
       );
-      console.log(provider);
-      console.log(address, "address");
       const response = await masterContract.submitProposal(data);
       await response.wait();
       // setWithdrawRequests([]);
@@ -639,24 +583,16 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
     } catch (error) {
       setloader(false);
       toast.error(`${JSON.stringify(error.reason)}`);
-      console.log(error);
     }
   };
 
   const GetAllProposalByArray = async () => {
     try {
-      console.log("sdassssssss");
-      // setloader(true);
       let RewardAmount = [];
-
       const proposalCount = await getProviderMasterContract().proposalCount();
-      console.log(proposalCount?.toString(), "proposalCount?.toString()");
 
       for (let i = 1; i <= proposalCount?.toString(); i++) {
-        console.log("proposalCount");
-
         let reward = await getProviderMasterContract().proposals(i);
-        console.log(reward, "rewardrewardreward");
 
         const decryptData = (ciphertext) => {
           try {
@@ -683,14 +619,12 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
           executed: reward.executed?.toString(),
           proposerId: i,
         };
-        console.log(Data, "Data");
         RewardAmount.push(Data);
       }
       setMasterContractProposalData(RewardAmount);
       // setloader(false);
     } catch (error) {
       setloader(false);
-      console.log(error);
     }
   };
 
@@ -722,7 +656,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       setloader(false);
     } catch (error) {
       setloader(false);
-      console.log(error);
       toast.error(`${JSON.stringify(error.reason)}`);
     }
   };
@@ -955,7 +888,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       //   //   shouldPollResponse:true
       //   // });
       //   // // await result.wait();
-      //   // console.log(resultToken, "resultTokenresultTokenresultToken");
 
       //   // let result = await TronWrappedBridgeContract.burn("TUQvyTGrZkqgVQrWP8gwJH1tce8cfp8yuX",tokens?.toString(),1,1000).send({
       //   //     feeLimit:100_000_000,
@@ -963,12 +895,10 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       //   //     shouldPollResponse:true
       //   //   });
 
-      //   //   console.log(result, "resultresultresultresult2");
 
       //   let TronWrappedCdlContract = await window.tronWeb
       //     .contract()
       //     .at(WrappedTronTokenAddress.address);
-      //   console.log("check");
 
       //   let tokens = ethers.utils.parseEther("300000000000000");
       //   let tokensApproved = await TronWrappedCdlContract.allowance(
@@ -988,12 +918,9 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       //   }
 
       //   let burnAmount = ethers.utils.parseEther(amount?.toString());
-      //   console.log("transaction2");
       //   let TronWrappedBridgeContract = await window.tronWeb
       //     .contract()
       //     .at(WrappedTronBridgeAddress.address);
-
-      //   console.log("transaction3");
 
       //   await TronWrappedBridgeContract.burn(
       //     tronWalletForBridge,
@@ -1004,7 +931,6 @@ WBTCEarned?.toString(),"hhhhhhhhhhhhhhhhhhhhhhhh");
       //     callValue: 0,
       //     shouldPollResponse: true,
       //   });
-      //   console.log("transaction40,", tronCurrentAccount);
       // }
     } catch (error) {
       console.log(error, "error");

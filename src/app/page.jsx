@@ -1,6 +1,7 @@
 import PortfolioCard from "@/components/cards/PortfolioCard";
 import RecentlyAdded from "@/components/cards/RecentlyAdded";
 import TrendingCard from "@/components/cards/TrendingCard";
+import LightGraph from "@/components/graph/LightGraph";
 import MainPageGraph from "@/components/graph/MainPageGraph";
 import TopCoinsCaraousel from "@/components/slider/TopCoinsCaraousel";
 import axios from "axios";
@@ -38,12 +39,39 @@ const getData = async () => {
       image: detailedDataMap[token.id]?.logo,
     }));
 
+    // -------------- FN 2 -------------------------------
+    const baseUrl2 = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?symbol=SOL,ETH,BNB,BTC&count=100&interval=5m`;
+    const response2 = await axios.get(baseUrl2, { headers });
+    const tokenList2 = response2.data.data;
+
+    const formattedData = Object.keys(tokenList2).reduce((acc, symbol) => {
+      acc[symbol] = tokenList2[symbol][0].quotes
+        .map((quote) => {
+          const timestamp = quote?.timestamp;
+          const price = quote?.quote?.USD?.price;
+
+          const unixTime = timestamp
+            ? Math.floor(new Date(timestamp).getTime() / 1000)
+            : null;
+
+          if (unixTime && price) {
+            return { time: unixTime, price };
+          }
+          return null;
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.time - b.time);
+      return acc;
+    }, {});
+    // -------------- FN 2 -------------------------------
+
     return {
       trending: tokens.slice(0, 3),
       recentlyAdded: tokens.slice(3, 6),
-      portfolio: tokens.slice(6, 11),
+      portfolio: tokens.slice(6, 13),
       graph: tokens.slice(11, 20),
       topCoins: tokens,
+      formattedData: formattedData,
     };
   } catch (error) {
     console.error("Error fetching portfolio tokens:", error);
@@ -67,7 +95,8 @@ export default async function Home() {
         <div className="flex flex-col sm:flex-row gap-3 py-5">
           <PortfolioCard data={data.portfolio} />
           <div className="w-full bg-blue-200/5 rounded-3xl text-xl font-bold uppercase p-5 flex items-center justify-center">
-            <MainPageGraph data={data.graph} />
+            {/* <MainPageGraph data={data.graph} /> */}
+            <LightGraph coinData={data.formattedData} />
           </div>
         </div>
         <div className="flex flex-col gap-5 overflow-hidden">

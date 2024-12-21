@@ -29,14 +29,12 @@ export default function AddProposalModal({ lang }) {
   // Function to handle proposal submission
   const submitProposalData = async () => {
     const encryptedData = encryptData(proposal);
-    console.log(encryptedData, "encryptedDataencryptedData");
     try {
       await submitProposal(encryptedData);
       GetAllProposalByArray();
       setIsOpen(false); // Close the dialog
     } catch (error) {
       setIsOpen(false); // Close the dialog even if there's an error
-      console.log(error, "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
     }
   };
 

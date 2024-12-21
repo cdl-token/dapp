@@ -15,18 +15,12 @@ export default function VotingPage({ params }) {
 
   // const formatTimestamp = (timestamp) => {
   //   const date = new Date(timestamp * 1000); // Convert seconds to milliseconds
-  //   console.log(date, "datedatedatedatedate");
   //   return date?.toLocaleString(); // Customize date format as per your requirement
   // };
 
   // useEffect(() => {
   //   GetAllProposalByArray();
   // }, []);
-
-  // console.log(
-  //   masterContractProposalData,
-  //   "masterContractProposalDatamasterContractProposalDatamasterContractProposalData"
-  // );
 
   return (
     <div className="flex w-full justify-center p-3">

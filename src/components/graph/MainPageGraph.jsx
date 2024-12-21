@@ -188,7 +188,6 @@ const MainPageGraph = () => {
 
   const fetchData = async (interval) => {
     const data = await fetchCMCData();
-    console.log("DATA", data);
     return data;
   };
 

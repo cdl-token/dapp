@@ -42,19 +42,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={cn(
-          "text-white flex items-center relative w-full h-full md:pl-[300px] bg-custom-bg font-apfel",
+          "text-white flex items-center relative w-full h-full bg-custom-bg font-apfel",
           neueMachinaFont.variable,
           apfelFont.variable
         )}
       >
         <PreloaderProvider>
-          <>
+          <div className="md:pl-[300px] w-full h-full">
             <Sidebar />
             <div className="flex flex-col w-full min-h-screen md:max-w-[calc(100vw-300px)] relative">
               <Topbar />
               {children}
             </div>
-          </>
+          </div>
         </PreloaderProvider>
       </body>
     </html>
