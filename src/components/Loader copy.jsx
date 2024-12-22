@@ -50,7 +50,7 @@ const Loader = ({ isPresale = false }) => {
         "absolute inset-0 z-[100] flex items-center justify-center",
         isPresale
           ? "left-0 top-0 h-full min-h-[1000px] w-full bg-black/70"
-          : "bg-ash h-screen w-screen",
+          : "bg-custom-bg h-screen w-screen",
       )}
     >
       <motion.div ref={scope} className="circle" style={{ width: radius * 2 }}>
