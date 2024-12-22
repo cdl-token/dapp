@@ -27,6 +27,70 @@ export default function StakingCard({ slug }) {
   const [stake, setStake] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
+  const {
+    StakeTokensSend,
+    getClaimedRewardsByUser,
+    stakingContractData,
+    unstakeTokensRequest,
+    getStakedInfoByUser,
+  } = useContext(Store);
+
+  const stakeTokens = async () => {
+    try {
+      const months = parseInt(selectedOffer);
+      const days = months * 30;
+      console.log(days, months, "months");
+
+      // if (days < 90) {
+      //   return toast.error("Please Add More then 90 Days");
+      // }
+
+      await StakeTokensSend(
+        stake?.toString(),
+        months?.toString(),
+        selectedToken
+      ); //TODO:: days
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const unstakingToken = async () => {
+    try {
+      await unstakeTokensRequest(selectedToken);
+    } catch (error) {
+      console.error("Error while staking tokens:", error);
+    }
+  };
+
+  useEffect(() => {
+    getStakedInfoByUser();
+    getClaimedRewardsByUser();
+  }, [address]);
+
+  console.log(stake, "stakestakestake");
+
+  // Update stake value whenever selectedToken changes
+  useEffect(() => {
+    console.log(tab, "tabtab");
+    if (tab === "Unstake") {
+      const stakedTokens =
+        selectedToken === "USDT"
+          ? stakingContractData?.USDTStaked?.stakedTokens
+          : selectedToken === "USDC"
+            ? stakingContractData?.USDCStaked?.stakedTokens
+            : selectedToken === "BTC"
+              ? stakingContractData?.WBTCStaked?.stakedTokens
+              : selectedToken === "ETH"
+                ? stakingContractData?.WETHStaked?.stakedTokens
+                : selectedToken === "BNB"
+                  ? stakingContractData?.WBNBStaked?.stakedTokens
+                  : stakingContractData?.CdlStaked?.stakedTokens;
+      setStake(stakedTokens === undefined ? 0 : stakedTokens); // Set stake to the corresponding stakedTokens
+    } else {
+      setStake(null); // Reset stake when tab is "Stake"
+    }
+  }, [selectedToken, tab, stakingContractData]);
 
   return (
     <div className="relative col-span-6 flex w-full flex-col items-center gap-5 rounded-3xl bg-custom-darkgray p-5 lg:col-span-3">

@@ -10,21 +10,21 @@ import {
 } from "@web3modal/ethers5/react";
 import { ToastContainer, toast } from "react-toastify";
 
-import CdlCoinAddress from "./contractsData/LnbgLondonCoin-address.json";
-import CdlCoin from "./contractsData/LnbgLondonCoin.json";
+import CdlCoinAddress from "./contractsData/CryptoDataLive-address.json";
+import CdlCoin from "./contractsData/CryptoDataLive.json";
 
-import CdlMasterContractAddress from "./contractsData/LnbgLondonCoinMasterContract-address.json";
-import CdlMasterContract from "./contractsData/LnbgLondonCoinMasterContract.json";
+import CdlMasterContractAddress from "./contractsData/CryptoDataLiveMasterContract-address.json";
+import CdlMasterContract from "./contractsData/CryptoDataLiveMasterContract.json";
 
-import CdlMainBridgeBaseAddress from "./contractsData/LnbgLondonCoinBridgeBase-address.json";
-import CdlMainBridgeBaseAbi from "./contractsData/LnbgLondonCoinBridgeBase.json";
+import CdlMainBridgeBaseAddress from "./contractsData/CryptoDataLiveBridgeBase-address.json";
+import CdlMainBridgeBaseAbi from "./contractsData/CryptoDataLiveBridgeBase.json";
 
 //////   ETHEREUM WRAPPED BRIDGE  //////////////
-import WrappedBridgeETHCdlAddress from "./contractsData/WrappedBridgeLnbg-address.json";
-import WrappedBridgeETHCdlAbi from "./contractsData/WrappedBridgeLnbg.json";
+import WrappedBridgeETHCdlAddress from "./contractsData/WrappedBridgeCdl-address.json";
+import WrappedBridgeETHCdlAbi from "./contractsData/WrappedBridgeCdl.json";
 
-import WrappedTokenETHCdlAddress from "./contractsData/WrappedLnbgLondon-address.json";
-import WrappedTokenETHCdlAbi from "./contractsData/WrappedLnbgLondon.json";
+import WrappedTokenETHCdlAddress from "./contractsData/WrappedCryptoDataLive-address.json";
+import WrappedTokenETHCdlAbi from "./contractsData/WrappedCryptoDataLive.json";
 
 //////   BINANCE Staking Contract WITH USDT AND USDC   //////////////
 import USDCTokenAddress from "./contractsData/USDCToken-address.json";
@@ -33,8 +33,8 @@ import WBTCTokenAddress from "./contractsData/WBTCToken-address.json";
 import WETHTokenAddress from "./contractsData/WETHToken-address.json";
 import WBNBTokenAddress from "./contractsData/WBNBToken-address.json";
 
-import CdlStakingContractAddress from "./contractsData/LnbgLondonCoinStakingContract-address";
-import CdlStakingContractAbi from "./contractsData/LnbgLondonCoinStakingContract.json";
+import CdlStakingContractAddress from "./contractsData/CryptoDataLiveStakingContract-address.json";
+import CdlStakingContractAbi from "./contractsData/CryptoDataLiveStakingContract.json";
 import Loader from "@/components/Loader";
 
 const getProviderMasterContract = () => {
@@ -430,6 +430,8 @@ export const StoreProvider = ({ children }) => {
         CdlStakingContractAbi.abi,
         signer
       );
+
+      console.log(amount, duration, token,"amount, duration, token");
 
       const CdlContracts = new ethers.Contract(
         token === "USDT"

@@ -13,7 +13,7 @@ export default function BridgeCard() {
   
   // --------------For hydration error-------------------
   const [isClient, setIsClient] = useState(false);
-
+  const { LockDeposit, unLockDeposit } = useContext(Store);
   const [transferFromDropdown, setTransferFromDropdown] = useState(false); // Manage dropdown state
   const [transferToDropdown, setTransferToDropdown] = useState(false); // Manage dropdown state
   const [transferFrom, setTransferFrom] = useState("Ethereum"); // Manage selected option
