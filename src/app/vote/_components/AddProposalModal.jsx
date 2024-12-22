@@ -6,7 +6,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Store } from "@/context/Store"; // Make sure to import the context from the correct path
 import CryptoJS from "crypto-js"; // Ensure CryptoJS is installed and imported
 import { Plus } from "lucide-react";
 import { useState, useContext } from "react";
@@ -43,7 +42,7 @@ export default function AddProposalModal({ lang }) {
       <DialogTrigger className="bg-primary border-primary transition-all ease-in duration-300 border-4 hover:bg-white text-sm font-semibold p-1 h-fit mt-1 text-black rounded-full">
         <Plus size={24} />
       </DialogTrigger>
-      <DialogContent className="bg-coal border-none">
+      <DialogContent className="bg-custom-bg border border-gray-900">
         <DialogHeader>
           <DialogTitle className="text-4xl">New Proposal</DialogTitle>
           <div className="flex flex-col gap-5 py-5">
