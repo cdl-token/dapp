@@ -4,6 +4,8 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import { cn } from "@/lib/utils";
 import Topbar from "@/components/topbar/Topbar";
 import PreloaderProvider from "./PreloaderProvider";
+import { Web3Modal } from "@/context/Web3Modal";
+import { StoreProvider } from "@/context/Store";
 
 const neueMachinaFont = localFont({
   src: [
@@ -47,6 +49,8 @@ export default function RootLayout({ children }) {
           apfelFont.variable
         )}
       >
+        <Web3Modal>
+          <StoreProvider>
         <PreloaderProvider>
           <div className="md:pl-[300px] w-full h-full">
             <Sidebar />
@@ -56,6 +60,8 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </PreloaderProvider>
+        </StoreProvider>
+        </Web3Modal>
       </body>
     </html>
   );

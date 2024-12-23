@@ -13,7 +13,7 @@ export default function BridgeCard() {
   
   // --------------For hydration error-------------------
   const [isClient, setIsClient] = useState(false);
-
+  const { LockDeposit, unLockDeposit } = useContext(Store);
   const [transferFromDropdown, setTransferFromDropdown] = useState(false); // Manage dropdown state
   const [transferToDropdown, setTransferToDropdown] = useState(false); // Manage dropdown state
   const [transferFrom, setTransferFrom] = useState("Ethereum"); // Manage selected option
@@ -27,6 +27,33 @@ export default function BridgeCard() {
   const { isConnected } = useWeb3ModalAccount();
   const [fromValue, setFromValue] = useState(null);
   const router = useRouter();
+
+    const handleBridge = () => {
+    if (transferFrom == "Binance" && transferTo == "Ethereum") {
+      LockDeposit(fromValue, transferFrom, transferTo);
+    } else if (transferFrom == "Ethereum" && transferTo == "Binance") {
+      unLockDeposit(fromValue, transferFrom, transferTo);
+    } else {
+      toast.info("Coming Soon");
+    }
+    // Add your bridge handling logic here
+    // if (transferFrom == 2 && transferTo == 0) {
+    //   LockDeposit(amount, 56, 1);
+    // } else if (transferFrom == 0 && transferTo == 2) {
+    //   unLockDeposit(amount, 1, 56);
+    // } else if (transferFrom == 2 && transferTo == 1) {
+    //   LockDeposit(amount, 56, 137);
+    // } else if (transferFrom == 1 && transferTo == 2) {
+    //   unLockDeposit(amount, 137, 56);
+    // } else if (transferFrom == 2 && transferTo == 3) {
+    //   LockDeposit(amount, 56, 1000);
+    // } else if (transferFrom == 3 && transferTo == 2) {
+    //   unLockDeposit(amount, 1000, 56);
+    // } else {
+    //   toast.info("Coming Soon");
+    // }
+  };
+
 
   return (
     <div className="col-span-3 flex w-full flex-col items-center gap-5 rounded-3xl bg-custom-darkgray p-5 lg:col-span-2">

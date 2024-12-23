@@ -12,7 +12,8 @@ import { useState, useContext } from "react";
 
 export default function AddProposalModal({ lang }) {
   const [proposal, setProposal] = useState({ title: "", summary: "" });
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // State to handle dialog open/close
+  // const { submitProposal, GetAllProposalByArray } = useContext(Store);
 
   let keys = process.env.NEXT_PUBLIC_ENCRYPT_SECRET_KEYS;
   // Encrypt function

@@ -1,11 +1,22 @@
+
 "use client";
 
-import { useWeb3Modal } from "@web3modal/ethers5/react";
+import { useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers5/react";
 import Button from "./Button";
+import { useActionState } from "react";
 
 export default function ConnectWalletButton({ lang }) {
+  const { open } = useWeb3Modal();
+   const { address, chainId, isConnected } = useWeb3ModalAccount();
   return (
-    <Button
+    <>
+    {isConnected ?
+
+(<w3m-button/>)
+
+      :
+          (<Button
+    onClick={()=>open()}
       title={
         lang === "ru"
           ? "Подключить кошелек"
@@ -16,6 +27,10 @@ export default function ConnectWalletButton({ lang }) {
           : "Connect Wallet"
       }
       className="hover:bg-primary2 bg-primary text-lg font-semibold text-black"
-    />
+    />)
+    
+  }
+  </>
+
   );
 }
