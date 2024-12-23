@@ -2,26 +2,32 @@ import PortfolioCard from "@/components/cards/PortfolioCard";
 import RecentlyAdded from "@/components/cards/RecentlyAdded";
 import TrendingCard from "@/components/cards/TrendingCard";
 import LightGraph from "@/components/graph/LightGraph";
-import MainPageGraph from "@/components/graph/MainPageGraph";
 import TopCoinsCaraousel from "@/components/slider/TopCoinsCaraousel";
 import axios from "axios";
 
 const getData = async () => {
   const apiKey = process.env.NEXT_PUBLIC_COIN_MARKET_CAP_API_KEY;
-  const baseUrl = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=20`;
+  const trendingUrl = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/latest?start=1&limit=20`;
+  const recentUrl = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/new?start=1&limit=3`;
+  const quotesUrl = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?symbol=SOL,ETH,BNB,BTC&count=100&interval=5m`;
   const headers = {
     "X-CMC_PRO_API_KEY": apiKey,
   };
 
   try {
-    const response = await axios.get(baseUrl, { headers });
-    const tokenList = response.data.data;
+    const trendingResponse = await axios.get(trendingUrl, { headers });
+    const recentResponse = await axios.get(recentUrl, { headers });
+
+    const trendingTokenList = trendingResponse.data.data;
+    const recentTokenList = recentResponse.data.data;
+
+    const combinedTokenList = [...trendingTokenList, ...recentTokenList];
 
     const detailedResponse = await axios.get(
       "https://pro-api.coinmarketcap.com/v1/cryptocurrency/info",
       {
         params: {
-          id: tokenList.map((token) => token.id).join(","),
+          id: combinedTokenList.map((token) => token.id).join(","),
         },
         headers,
       }
@@ -29,7 +35,17 @@ const getData = async () => {
 
     const detailedDataMap = detailedResponse.data.data;
 
-    const tokens = tokenList.map((token) => ({
+    const trendingTokens = trendingTokenList.map((token) => ({
+      id: token.id,
+      name: token.name,
+      symbol: token.symbol,
+      price: token.quote.USD.price.toFixed(2),
+      percentage: token.quote.USD.percent_change_24h.toFixed(2),
+      plusPercentage: token.quote.USD.percent_change_24h.toFixed(2),
+      image: detailedDataMap[token.id]?.logo,
+    }));
+
+    const recentTokens = recentTokenList.map((token) => ({
       id: token.id,
       name: token.name,
       symbol: token.symbol,
@@ -40,8 +56,8 @@ const getData = async () => {
     }));
 
     // -------------- FN 2 -------------------------------
-    const baseUrl2 = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?symbol=SOL,ETH,BNB,BTC&count=100&interval=5m`;
-    const response2 = await axios.get(baseUrl2, { headers });
+    
+    const response2 = await axios.get(quotesUrl, { headers });
     const tokenList2 = response2.data.data;
 
     const formattedData = Object.keys(tokenList2).reduce((acc, symbol) => {
@@ -63,14 +79,15 @@ const getData = async () => {
         .sort((a, b) => a.time - b.time);
       return acc;
     }, {});
+
     // -------------- FN 2 -------------------------------
 
     return {
-      trending: tokens.slice(0, 3),
-      recentlyAdded: tokens.slice(3, 6),
-      portfolio: tokens.slice(6, 13),
-      graph: tokens.slice(11, 20),
-      topCoins: tokens,
+      trending: trendingTokens.slice(0,3),
+      recentlyAdded: recentTokens,
+      portfolio: trendingTokens.slice(3, 10),
+      // graph: trendingTokens.slice(3, 20),
+      topCoins: trendingTokens,
       formattedData: formattedData,
     };
   } catch (error) {
