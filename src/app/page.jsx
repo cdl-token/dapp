@@ -1,3 +1,4 @@
+// "use client";
 import PortfolioCard from "@/components/cards/PortfolioCard";
 import RecentlyAdded from "@/components/cards/RecentlyAdded";
 import TrendingCard from "@/components/cards/TrendingCard";
@@ -99,6 +100,7 @@ const getData = async () => {
 export default async function Home() {
   try {
     const data = await getData();
+    // const { address, chainId, isConnected } = useWeb3ModalAccount(); //TODO::Add Condition Here
 
     return (
       <div className="flex flex-col pl-3 pr-5 pb-10">
