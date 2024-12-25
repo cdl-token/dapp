@@ -89,7 +89,9 @@ const PortfolioCard = ({ address }) => {
     // Function to fetch the data
     const fetchTokens = async () => {
       try {
-        const response = await fetch(`/api/moralis/getTokens?address=${address}`);
+        const response = await fetch(
+          `/api/moralis/getTokens?address=${address}`
+        );
         const result = await response.json();
 
         if (response?.ok) {
@@ -109,75 +111,85 @@ const PortfolioCard = ({ address }) => {
     }
   }, [address, isConnected]);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center">
-        <p className="text-red-500">{error}</p>
-      </div>
-    );
-  }
+  console.log("DATA", data);
 
   return (
-    <div className="flex flex-col min-w-[258px] w-full sm:w-fit bg-[#8D33E5] text-white rounded-[24px]">
+    <div className="flex flex-col sm:min-w-[358px] w-full sm:w-fit bg-[#8D33E5] text-white rounded-[24px]">
       <div className="px-4 py-3 flex items-center justify-between">
         <span className="text-xl font-bold font-neue">My Portfolio</span>
         {threeDots}
       </div>
-      <div className="flex flex-col border-t-2 border-black">
-        {data?.map((token) => (
-          <div
-            key={token?.token_address}
-            className="flex items-center gap-3 border-b-[0.5px] border-black px-4 py-3"
-          >
-            {/* Token Logo */}
-            <div className="flex items-center justify-center min-h-[48px] min-w-[48px] h-[48px] w-[48px] rounded-full bg-black">
-              <Image
-                src={token?.logo || "/logo.png"} // Fallback image if logo is not available
-                width={17}
-                height={17}
-                alt={token?.name}
-              />
+      {loading ? (
+        <div className="flex justify-center items-center pb-20 pt-10">
+          <p>Loading...</p>
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center pb-20 pt-10">
+          <p className="text-red-500">{error}</p>
+        </div>
+      ) : data?.length == 0 || data == undefined ? (
+        <div className="flex justify-center items-center">
+          <p className="text-white pb-20 pt-10">
+            There is no data to display.
+          </p>
+        </div>
+      ) : (
+        <div className="flex flex-col border-t-2 border-black">
+          {data?.map((token) => (
+            <div
+              key={token?.token_address}
+              className="flex items-center gap-3 border-b-[0.5px] border-black px-4 py-3"
+            >
+              {/* Token Logo */}
+              <div className="flex items-center justify-center min-h-[48px] min-w-[48px] h-[48px] w-[48px] rounded-full bg-black">
+                <Image
+                  src={token?.logo || "/logo.png"} // Fallback image if logo is not available
+                  width={17}
+                  height={17}
+                  alt={token?.name}
+                />
+              </div>
+              <div className="flex flex-col flex-grow justify-between">
+                <span className="text-[19px] font-semibold text-[#E1E1E1]">
+                  {token?.name}
+                </span>
+                <span className="uppercase">{token?.symbol}</span>
+              </div>
+              <div className="flex flex-col justify-between items-center">
+                {/* Balance in Ether format */}
+                <span className="text-[19px] font-bold text-[#E1E1E1]">
+                  {Number(token?.balance_formatted)?.toFixed(4)}
+                </span>
+                {/* USD Price */}
+                <span className="text-xs text-[#E1E1E1]">
+                  $
+                  {token?.symbol === "CDL" || token?.name === "CDL"
+                    ? "$0.023"
+                    : token?.usd_price?.toFixed(2)}{" "}
+                  USD
+                </span>
+                {/* 24hr price change */}
+                <span
+                  className={cn(
+                    "bg-black px-2 py-0.5 rounded-full text-xs",
+                    token?.usd_price_24hr_percent_change > 0
+                      ? "text-[#1DD6B4]"
+                      : "text-[#F46D22]"
+                  )}
+                >
+                  {token?.usd_price_24hr_percent_change > 0
+                    ? `+${
+                        token?.usd_price_24hr_percent_change?.toFixed(2) || 0
+                      }%`
+                    : `${
+                        token?.usd_price_24hr_percent_change?.toFixed(2) || 0
+                      }%`}
+                </span>
+              </div>
             </div>
-            <div className="flex flex-col flex-grow justify-between">
-              <span className="text-[19px] font-semibold text-[#E1E1E1]">
-                {token?.name}
-              </span>
-              <span className="uppercase">{token?.symbol}</span>
-            </div>
-            <div className="flex flex-col justify-between items-center">
-              {/* Balance in Ether format */}
-              <span className="text-[19px] font-bold text-[#E1E1E1]">
-                {Number(token?.balance_formatted)?.toFixed(4)} 
-              </span>
-              {/* USD Price */}
-              <span className="text-xs text-[#E1E1E1]">
-                ${token?.symbol === "CDL" || token?.name === "CDL" ? "$0.023" : token?.usd_price?.toFixed(2)} USD
-              </span>
-              {/* 24hr price change */}
-              <span
-                className={cn(
-                  "bg-black px-2 py-0.5 rounded-full text-xs",
-                  token?.usd_price_24hr_percent_change > 0
-                    ? "text-[#1DD6B4]"
-                    : "text-[#F46D22]"
-                )}
-              >
-                {token?.usd_price_24hr_percent_change > 0
-                  ? `+${token?.usd_price_24hr_percent_change?.toFixed(2) || 0}%`
-                  : `${token?.usd_price_24hr_percent_change?.toFixed(2) || 0}%`}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -197,4 +209,3 @@ const threeDots = (
 );
 
 export default PortfolioCard;
-
