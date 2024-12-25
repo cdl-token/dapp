@@ -1,9 +1,5 @@
 // "use client";
-import PortfolioCard from "@/components/cards/PortfolioCard";
-import RecentlyAdded from "@/components/cards/RecentlyAdded";
-import TrendingCard from "@/components/cards/TrendingCard";
-import LightGraph from "@/components/graph/LightGraph";
-import TopCoinsCaraousel from "@/components/slider/TopCoinsCaraousel";
+import DashboardSection from "@/components/sections/DashboardSection";
 import axios from "axios";
 
 const getData = async () => {
@@ -57,7 +53,7 @@ const getData = async () => {
     }));
 
     // -------------- FN 2 -------------------------------
-    
+
     const response2 = await axios.get(quotesUrl, { headers });
     const tokenList2 = response2.data.data;
 
@@ -84,7 +80,7 @@ const getData = async () => {
     // -------------- FN 2 -------------------------------
 
     return {
-      trending: trendingTokens.slice(0,3),
+      trending: trendingTokens.slice(0, 3),
       recentlyAdded: recentTokens,
       portfolio: trendingTokens.slice(3, 10),
       // graph: trendingTokens.slice(3, 20),
@@ -100,28 +96,10 @@ const getData = async () => {
 export default async function Home() {
   try {
     const data = await getData();
-    // const { address, chainId, isConnected } = useWeb3ModalAccount(); //TODO::Add Condition Here
 
     return (
       <div className="flex flex-col pl-3 pr-5 pb-10">
-        <span className="text-custom-gray font-neue">
-          Today's prices by Crypto Data Live Token
-        </span>
-        <div className="grid lg:grid-cols-2 py-5 gap-3 w-full">
-          <TrendingCard data={data.trending} />
-          <RecentlyAdded data={data.recentlyAdded} />
-        </div>
-        <div className="flex flex-col sm:flex-row gap-3 py-5">
-          <PortfolioCard data={data.portfolio} />
-          <div className="w-full bg-blue-200/5 rounded-3xl text-xl font-bold uppercase p-5 flex items-center justify-center">
-            {/* <MainPageGraph data={data.graph} /> */}
-            <LightGraph coinData={data.formattedData} />
-          </div>
-        </div>
-        <div className="flex flex-col gap-5 overflow-hidden">
-          <span className="text-2xl font-apfel">Top coins</span>
-          <TopCoinsCaraousel data={data.topCoins} />
-        </div>
+        <DashboardSection data={data} />
       </div>
     );
   } catch (error) {
