@@ -24,8 +24,8 @@ import Image from "next/image";
 import { useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers5/react";
 
 const MobileSidebar = () => {
-  const {open} = useWeb3Modal()
-  const {isConnect}=useWeb3ModalAccount()
+  const { open } = useWeb3Modal();
+  const { isConnect } = useWeb3ModalAccount();
 
   return (
     <div className="md:hidden">
@@ -55,16 +55,16 @@ const MobileSidebar = () => {
               <NavLink icon={voteIcon} title="Vote" href="/vote" />
               <NavLink icon={bridgeIcon} title="Bridge" href="/bridge" />
               <NavLink icon={claimIcon} title="Claim" href="/claim" />
-              {isConnect ? 
-              <w3m-button />
-              :
-                <button onClick={()=>open()}className="px-5 py-3 mt-5 flex items-center justify-center border border-white hover:border-primary hover:text-primary transition-all ease-in duration-200 rounded-lg font-neue font-bold">
-                Connect wallet
-              </button>
-              
-              }
-         
-            
+              {isConnect ? (
+                <w3m-button />
+              ) : (
+                <button
+                  onClick={() => open()}
+                  className="px-5 py-3 mt-5 flex items-center justify-center border border-white hover:border-primary hover:text-primary transition-all ease-in duration-200 rounded-lg font-neue font-bold"
+                >
+                  Connect wallet
+                </button>
+              )}
             </div>
             <div className="h-full w-full flex flex-col text-sm gap-2 justify-end pb-10 font-neue">
               <Link className="hover:underline" href="/static/whitepaper.pdf">

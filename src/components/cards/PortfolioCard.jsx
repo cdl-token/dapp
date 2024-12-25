@@ -6,7 +6,7 @@ import React from "react";
 
 const PortfolioCard = ({ data }) => {
   return (
-    <div className="flex flex-col min-w-[258px] w-full sm:w-fit bg-[#8D33E5] text-white rounded-[24px]">
+    <div className="flex flex-col min-w-[258px] w-full lg:w-fit bg-[#8D33E5] text-white rounded-[24px]">
       <div className="px-4 py-3 flex items-center justify-between">
         <span className="text-xl font-bold font-neue">My Portfolio</span>
         {threeDots}
