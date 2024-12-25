@@ -25,7 +25,7 @@ import { useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers5/react";
 
 const MobileSidebar = () => {
   const { open } = useWeb3Modal();
-  const { isConnect } = useWeb3ModalAccount();
+  const { isConnected } = useWeb3ModalAccount();
 
   return (
     <div className="md:hidden">
@@ -55,7 +55,8 @@ const MobileSidebar = () => {
               <NavLink icon={voteIcon} title="Vote" href="/vote" />
               <NavLink icon={bridgeIcon} title="Bridge" href="/bridge" />
               <NavLink icon={claimIcon} title="Claim" href="/claim" />
-              {isConnect ? (
+              {isConnected ? (
+
                 <w3m-button />
               ) : (
                 <button
