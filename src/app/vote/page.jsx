@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import AddProposalModal from "./_components/AddProposalModal";
 import Image from "next/image";
+import { useWeb3ModalAccount } from "@web3modal/ethers5/react";
+import ConnectWalletButton from "@/components/buttons/ConnectWalletButton";
 
 export default function VotingPage({ params }) {
   const { lang } = params;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Proposal");
+  const { address, chainId, isConnected } = useWeb3ModalAccount(); //TODO::Add Condition Here
 
   // const { masterContractProposalData, GetAllProposalByArray } =
   //   useContext(Store);
@@ -21,6 +24,17 @@ export default function VotingPage({ params }) {
   // useEffect(() => {
   //   GetAllProposalByArray();
   // }, []);
+
+  if (!isConnected) {
+    return (
+      <div className="flex h-[320px] w-full flex-col items-center border-white/10 border justify-end gap-5 rounded-xl bg-[#15161766] px-10 py-16">
+        <span className="w-full text-4xl font-semibold">
+          Connect your wallet to get started
+        </span>
+        <ConnectWalletButton />
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full justify-center p-3">

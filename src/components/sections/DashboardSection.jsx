@@ -6,12 +6,20 @@ import PortfolioCard from "@/components/cards/PortfolioCard";
 import RecentlyAdded from "@/components/cards/RecentlyAdded";
 import TrendingCard from "@/components/cards/TrendingCard";
 import LightGraph from "@/components/graph/LightGraph";
+import ConnectWalletButton from "../buttons/ConnectWalletButton";
 
 const DashboardSection = ({ data }) => {
   const { address, chainId, isConnected } = useWeb3ModalAccount(); //TODO::Add Condition Here
 
   if (!isConnected) {
-    return <p>Please connect wallet</p>;
+    return (
+      <div className="flex h-[320px] w-full flex-col items-center border-white/10 border justify-end gap-5 rounded-xl bg-[#15161766] px-10 py-16">
+        <span className="w-full text-4xl font-semibold">
+          Connect your wallet to get started
+        </span>
+        <ConnectWalletButton />
+      </div>
+    );
   }
   return (
     <>

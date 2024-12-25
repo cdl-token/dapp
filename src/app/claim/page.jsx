@@ -14,7 +14,19 @@ export default function ClaimPage() {
   }, []);
   // ----------------------------------------------------
 
-  const { isConnected } = useWeb3ModalAccount();
+  const { address, chainId, isConnected } = useWeb3ModalAccount();
+
+  if (!isConnected) {
+    return (
+      <div className="flex h-[320px] w-full flex-col items-center border-white/10 border justify-end gap-5 rounded-xl bg-[#15161766] px-10 py-16">
+        <span className="w-full text-4xl font-semibold">
+          Connect your wallet to get started
+        </span>
+        <ConnectWalletButton />
+      </div>
+    );
+  }
+  
   return (
     <div className="flex w-full justify-center p-10">
       <div className="flex w-full flex-col gap-5">
@@ -40,11 +52,11 @@ export default function ClaimPage() {
                   marking a significant milestone for our project.
                 </span>
                 <span className="px-5 text-lg font-medium max-w-2xl text-white/80">
-                  Get ready to claim and trade your CDL tokens! Once the
-                  presale ends, the referral and airdrop token distribution will
-                  begin, opening up exciting opportunities for everyone
-                  involved. Keep a close eye on the countdown—this is your
-                  chance to be part of the future of finance!
+                  Get ready to claim and trade your CDL tokens! Once the presale
+                  ends, the referral and airdrop token distribution will begin,
+                  opening up exciting opportunities for everyone involved. Keep
+                  a close eye on the countdown—this is your chance to be part of
+                  the future of finance!
                 </span>
               </div>
             </div>
