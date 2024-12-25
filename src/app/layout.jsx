@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
             <PreloaderProvider>
               <div className="md:pl-[300px] w-full h-full">
                 <Sidebar />
-                <div className="flex flex-col w-full min-h-screen md:max-w-[calc(100vw-300px)] pr-3 relative">
+                <div className="flex flex-col w-full min-h-screen md:max-w-[calc(100vw-300px)] md:pr-3 relative">
                   <Topbar />
                   {children}
                 </div>
