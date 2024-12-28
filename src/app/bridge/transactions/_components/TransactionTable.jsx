@@ -8,21 +8,21 @@
 // export default function TransactionTable() {
 //   const dummyTransactions = [
 //     {
-//       token: "$LNBG",
+//       token: "$CDL",
 //       amount: "0.0001",
 //       account: "0x1234...7890",
 //       status: "Completed",
 //       type: "Mint",
 //     },
 //     {
-//       token: "$LNBG",
+//       token: "$CDL",
 //       amount: "0.0001",
 //       account: "0x1234...7890",
 //       status: "Pending",
 //       type: "Burn",
 //     },
 //     {
-//       token: "$LNBG",
+//       token: "$CDL",
 //       amount: "0.0001",
 //       account: "0x1234...7890",
 //       status: "Completed",

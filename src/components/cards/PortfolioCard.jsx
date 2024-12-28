@@ -143,7 +143,7 @@ const PortfolioCard = ({ address }) => {
               {/* Token Logo */}
               <div className="flex items-center justify-center min-h-[48px] min-w-[48px] h-[48px] w-[48px] rounded-full bg-black">
                 <Image
-                  src={token?.logo || "/logo.png"} // Fallback image if logo is not available
+                  src={token?.logo || "/logo.svg"} // Fallback image if logo is not available
                   width={17}
                   height={17}
                   alt={token?.name}

@@ -1,6 +1,6 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "WrappedLnbgLondon",
+  "contractName": "WrappedCDLLondon",
   "sourceName": "contracts/WrappedTokenBase.sol",
   "abi": [
     {

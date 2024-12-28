@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CoinCard from "./CoinCard";
 
 export default function VaultSection() {
@@ -46,7 +47,7 @@ export default function VaultSection() {
         />
       </div>
       <div className="pb-10 flex items-center justify-center">
-        <button>EXPLORE ALL VAULTS</button>
+        <Link href="/staking/vaults">EXPLORE ALL VAULTS</Link>
       </div>
     </div>
   );

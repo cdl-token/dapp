@@ -217,7 +217,7 @@ export default function StakingCard({ slug }) {
                   alt="CDL"
                   src={
                     slug === "cdl"
-                      ? "/logo.png"
+                      ? "/logo.svg"
                       : `/coins/${slug}.svg`
                   }
                 />
@@ -319,7 +319,7 @@ export default function StakingCard({ slug }) {
                 height={20}
                 className="mx-1"
                 alt="CDL"
-                src="/logo.png"
+                src="/logo.svg"
               />{" "}
               CDL
             </div>

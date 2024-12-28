@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "LnbgLondonCoin",
-  "sourceName": "contracts/LnbgToken.sol",
+  "contractName": "CDLLondonCoin",
+  "sourceName": "contracts/CDLToken.sol",
   "abi": [
     {
       "inputs": [],
