@@ -31,7 +31,7 @@ const DashboardSection = ({ data }) => {
         <RecentlyAdded data={data.recentlyAdded} />
       </div>
       <div className="flex flex-col lg:flex-row gap-3 py-5">
-        <PortfolioCard data={data.portfolio} />
+        <PortfolioCard/>
         <div className="w-full bg-blue-200/5 rounded-3xl text-xl font-bold uppercase p-5 flex items-center justify-center">
           {/* <MainPageGraph data={data.graph} /> */}
           <LightGraph coinData={data.formattedData} />
