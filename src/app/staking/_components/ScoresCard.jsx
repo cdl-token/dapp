@@ -5,6 +5,8 @@ import React, { useContext, useEffect } from "react";
 import Countdown from "react-countdown";
 
 export default function ScoresCard() {
+  const { stakingContractData }=useContext(Store);
+  
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       return <span>Completed!</span>;
@@ -16,7 +18,9 @@ export default function ScoresCard() {
       );
     }
   };
-
+  console.log(stakingContractData,
+    "stakingContractDatastakingContractDatastakingContractData"
+  );
   return (
     <div className="col-span-6 relative flex h-fit flex-col gap-8 rounded-3xl bg-custom-darkgray p-6 lg:col-span-3">
       <div className="flex flex-col gap-3 max-h-[25rem] overflow-auto">
@@ -26,14 +30,14 @@ export default function ScoresCard() {
             Earned Reward
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
-          <div className="flex items-center gap-1">{lockIcon}</div>
+          <div className="flex items-center gap-1">{Number(+stakingContractData?.TotalEarnedReward || "0")?.toFixed(6)} {lockIcon}</div>
         </div>
         <div className="flex items-baseline gap-1">
           <span className="w-fit text-nowrap font-semibold text-gray2">
             Claimed Reward
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
-          <div className="flex items-center gap-1">{lockIcon}</div>
+          <div className="flex items-center gap-1"> {Number(+stakingContractData?.claimedRewards || "0")?.toFixed(6)} {lockIcon}</div>
         </div>
         <span className="text-primary2 font-semibold uppercase">
           WBTC Staked
@@ -43,7 +47,7 @@ export default function ScoresCard() {
             Staked WBTC Tokens
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
-          <div className="flex items-center gap-1">{lockIcon}</div>
+          <div className="flex items-center gap-1"> {Number(+stakingContractData?.WBTCStaked?.stakedTokens || "0")?.toFixed(6)} {lockIcon}</div>
         </div>
         <div className="flex items-baseline gap-1">
           <span className="w-fit text-nowrap font-semibold text-gray2">
@@ -51,7 +55,7 @@ export default function ScoresCard() {
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
-            <Countdown date={new Date()} renderer={renderer} />
+            <Countdown date={new Date(+stakingContractData?.WBTCStaked?.duration || 0)} renderer={renderer} />
             {lockIcon}
           </div>
         </div>
@@ -65,7 +69,7 @@ export default function ScoresCard() {
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
-            {0}
+          {Number(stakingContractData?.WETHStaked?.stakedTokens || "0")?.toFixed(6)}
             {lockIcon}
           </div>
         </div>
@@ -76,7 +80,7 @@ export default function ScoresCard() {
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
             <Countdown
-              date={new Date(0)}
+              date={new Date(+stakingContractData?.WETHStaked?.duration || 0)}
               renderer={renderer}
             />
             {lockIcon}
@@ -92,7 +96,7 @@ export default function ScoresCard() {
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
-            {0}
+        {Number(stakingContractData?.WBNBStaked?.stakedTokens || "0")?.toFixed(6)}
             {lockIcon}
           </div>
         </div>
@@ -103,7 +107,7 @@ export default function ScoresCard() {
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
             <Countdown
-              date={new Date(0)}
+              date={new Date(+stakingContractData?.WBNBStaked?.duration || 0)}
               renderer={renderer}
             />
             {lockIcon}
@@ -118,7 +122,7 @@ export default function ScoresCard() {
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
-            {0}
+           {Number(stakingContractData?.CdlStaked?.stakedTokens || "0")?.toFixed(6)}
             {lockIcon}
           </div>
         </div>
@@ -129,7 +133,7 @@ export default function ScoresCard() {
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
             <Countdown
-              date={new Date(0)}
+              date={new Date(+stakingContractData?.CdlStaked?.duration || 0)}
               renderer={renderer}
             />
             {lockIcon}
@@ -144,7 +148,7 @@ export default function ScoresCard() {
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
-            {0}
+          {Number(stakingContractData?.USDTStaked?.stakedTokens || "0")?.toFixed(6)}
             {lockIcon}
           </div>
         </div>
@@ -155,7 +159,7 @@ export default function ScoresCard() {
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
             <Countdown
-              date={new Date(0)}
+              date={new Date(+stakingContractData?.USDTStaked?.duration || 0)}
               renderer={renderer}
             />
             {lockIcon}
@@ -170,7 +174,7 @@ export default function ScoresCard() {
           </span>
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
-            {0}
+            {Number(stakingContractData?.USDCStaked?.stakedTokens || "0")?.toFixed(6)}
             {lockIcon}
           </div>
         </div>
@@ -181,7 +185,7 @@ export default function ScoresCard() {
           <div className="w-full border-b border-dashed border-gray2/50"></div>
           <div className="flex items-center gap-1">
             <Countdown
-              date={new Date(0)}
+              date={new Date(+stakingContractData?.USDCStaked?.duration || 0)}
               renderer={renderer}
             />
             {lockIcon}

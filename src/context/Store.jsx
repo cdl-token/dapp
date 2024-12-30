@@ -279,16 +279,16 @@ export const StoreProvider = ({ children }) => {
         );
         const WETHStaked = await stakingContract.userStakesByToken(
           address,
-          WBTCTokenAddress.address
+          WETHTokenAddress.address
         );
         const WBNBStaked = await stakingContract.userStakesByToken(
           address,
-          WETHTokenAddress.address
+          WBNBTokenAddress.address
         );
 
         const WBTCStaked = await stakingContract.userStakesByToken(
           address,
-          WBNBTokenAddress.address
+          WBTCTokenAddress.address
         );
 
         const CdlEarned = await stakingContract.rewardedTokens(
@@ -305,15 +305,15 @@ export const StoreProvider = ({ children }) => {
         );
         const WETHEarned = await stakingContract.rewardedTokens(
           address,
-          WBTCTokenAddress.address
+          WETHTokenAddress.address
         );
         const WBNBEarned = await stakingContract.rewardedTokens(
           address,
-          WETHTokenAddress.address
+          WBNBTokenAddress.address
         );
         const WBTCEarned = await stakingContract.rewardedTokens(
           address,
-          WBNBTokenAddress.address
+          WBTCTokenAddress.address
         );
         let CdlCdl = ethers.utils.formatEther(CdlEarned?.toString());
         let CdlUSDC = ethers.utils.formatEther(USDCEarned?.toString());
@@ -459,8 +459,6 @@ const signer = provider.getSigner();
       );
 
       console.log("4");
-
-      toast.info("Its working")
       
     //   if (+tokens?.toString() > +balance?.toString())
     //     return (

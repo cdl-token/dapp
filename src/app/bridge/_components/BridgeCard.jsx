@@ -82,7 +82,7 @@ export default function BridgeCard() {
             inputMode="numeric"
             name="fromValue"
             id="fromValue"
-            value={fromValue}
+            value={fromValue || null}
             placeholder="0"
             onChange={(e) => setFromValue(e.target.value)}
             className="w-full border-none bg-transparent text-3xl outline-none"
@@ -144,7 +144,7 @@ export default function BridgeCard() {
             inputMode="numeric"
             name="fromValue"
             id="fromValue"
-            value={fromValue}
+            value={fromValue || null}
             placeholder="0"
             onChange={(e) => setFromValue(e.target.value)}
             className="w-full border-none bg-transparent text-3xl outline-none"
