@@ -79,11 +79,12 @@ import Image from "next/image";
 import { cn } from "@/lib/utils"; // Import this if you use utility classes
 import { useWeb3ModalAccount } from "@web3modal/ethers5/react";
 
-const PortfolioCard = ({ address }) => {
+const PortfolioCard = () => {
   const [data, setData] = useState(null); // For storing fetched token data
   const [error, setError] = useState(null); // For handling any errors
   const [loading, setLoading] = useState(true); // To show loading state
-  const { chainId, isConnected } = useWeb3ModalAccount();
+  const { address, chainId, isConnected } = useWeb3ModalAccount();
+  
 
   useEffect(() => {
     // Function to fetch the data

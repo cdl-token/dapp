@@ -40,7 +40,7 @@ export default function StakingCard({ slug }) {
       const months = parseInt(selectedOffer);
       const days = months * 30;
       console.log(days, months, "months");
-
+  console.log(address,isConnected,"addressaddressaddress");      
       // if (days < 90) {
       //   return toast.error("Please Add More then 90 Days");
       // }

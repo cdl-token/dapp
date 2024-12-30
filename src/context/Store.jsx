@@ -422,33 +422,35 @@ export const StoreProvider = ({ children }) => {
     try {
       if (amount <= 0)
         return setloader(false), toast.error("Please enter amount");
-
-      const provider = new ethers.providers.Web3Provider(walletProvider);
-      const signer = provider.getSigner();
+console.log("1");
+const provider = new ethers.providers.Web3Provider(walletProvider);
+const signer = provider.getSigner();
       const stakingContract = new ethers.Contract(
         CdlStakingContractAddress.address,
         CdlStakingContractAbi.abi,
         signer
       );
-
+      console.log("2");
+      
       console.log(amount, duration, token,"amount, duration, token");
-
+      
       const CdlContracts = new ethers.Contract(
         token === "USDT"
-          ? USDTTokenAddress.address
-          : token === "USDC"
-            ? USDCTokenAddress.address
-            : token === "BTC"
-              ? WBTCTokenAddress.address
-              : token === "ETH"
-                ? WETHTokenAddress.address
-                : token === "BNB"
-                  ? WBNBTokenAddress.address
-                  : CdlCoinAddress.address,
+        ? USDTTokenAddress.address
+        : token === "USDC"
+        ? USDCTokenAddress.address
+        : token === "BTC"
+        ? WBTCTokenAddress.address
+        : token === "ETH"
+        ? WETHTokenAddress.address
+        : token === "BNB"
+        ? WBNBTokenAddress.address
+        : CdlCoinAddress.address,
         CdlCoin.abi,
         signer
       );
-
+      console.log("3");
+      
       const tokens = ethers.utils.parseEther(amount?.toString());
       let balance = await CdlContracts.balanceOf(address?.toString());
       let allow = await CdlContracts.allowance(
@@ -456,47 +458,55 @@ export const StoreProvider = ({ children }) => {
         CdlStakingContractAddress?.address
       );
 
-      if (+tokens?.toString() > +balance?.toString())
-        return (
-          setloader(false),
-          toast.error(
-            `Your available balance is ${Number(
-              ethers.utils.formatEther(balance?.toString())
-            )?.toFixed(5)} Cdl`
-          )
-        );
+      console.log("4");
 
-      if (+allow?.toString() < +tokens?.toString()) {
-        let approve = await CdlContracts.approve(
-          CdlStakingContractAddress.address,
-          tokens?.toString()
-        );
+      toast.info("Its working")
+      
+    //   if (+tokens?.toString() > +balance?.toString())
+    //     return (
+    //   setloader(false),
+    //   toast.error(
+    //     `Your available balance is ${Number(
+    //       ethers.utils.formatEther(balance?.toString())
+    //     )?.toFixed(5)} Cdl`
+    //   )
+    // );
 
-        await approve.wait();
-      }
-
-      //TODO:: update this code
-      // const currentTimestamp = Math.floor(Date.now() / 1000);
+    console.log("5");
+    
+    if (+allow?.toString() < +tokens?.toString()) {
+      let approve = await CdlContracts.approve(
+        CdlStakingContractAddress.address,
+        tokens?.toString()
+      );
+      
+      await approve.wait();
+    }
+    console.log("6");
+    
+    //TODO:: update this code
+    // const currentTimestamp = Math.floor(Date.now() / 1000);
       // const ninetyDaysInSeconds = duration * 24 * 60 * 60; // 90 days in seconds
       // let days = currentTimestamp + ninetyDaysInSeconds;
-
+      
       const currentTimestamp = Math.floor(Date.now() / 1000);
       const ninetyDaysInSeconds = duration * 60; // 90 days in seconds
       let days = currentTimestamp + ninetyDaysInSeconds;
-
+      
       let tokenAddress =
-        token === "USDT"
-          ? USDTTokenAddress.address
-          : token === "USDC"
-            ? USDCTokenAddress.address
-            : token === "BTC"
-              ? WBTCTokenAddress.address
-              : token === "ETH"
-                ? WETHTokenAddress.address
-                : token === "BNB"
-                  ? WBNBTokenAddress.address
-                  : CdlCoinAddress.address;
-
+      token === "USDT"
+      ? USDTTokenAddress.address
+      : token === "USDC"
+      ? USDCTokenAddress.address
+      : token === "BTC"
+      ? WBTCTokenAddress.address
+      : token === "ETH"
+      ? WETHTokenAddress.address
+      : token === "BNB"
+      ? WBNBTokenAddress.address
+      : CdlCoinAddress.address;
+      console.log("7");
+      
       let respon = await stakingContract.stakeTokens(
         tokens?.toString(),
         days,
@@ -508,6 +518,7 @@ export const StoreProvider = ({ children }) => {
       getStakedInfoByUser();
       setloader(false);
     } catch (error) {
+      console.log(error,"errorerror");
       setloader(false);
       toast.error(`${JSON.stringify(error.reason)}`);
       return false;
