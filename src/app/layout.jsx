@@ -6,6 +6,8 @@ import Topbar from "@/components/topbar/Topbar";
 import PreloaderProvider from "./PreloaderProvider";
 import { Web3Modal } from "@/context/Web3Modal";
 import { StoreProvider } from "@/context/Store";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const neueMachinaFont = localFont({
   src: [
@@ -49,6 +51,7 @@ export default function RootLayout({ children }) {
           apfelFont.variable
         )}
       >
+                <ToastContainer/>
         <Web3Modal>
           <StoreProvider>
             <PreloaderProvider>

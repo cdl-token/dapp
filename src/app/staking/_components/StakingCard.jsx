@@ -40,7 +40,7 @@ export default function StakingCard({ slug }) {
       const months = parseInt(selectedOffer);
       const days = months * 30;
       console.log(days, months, "months");
-
+  console.log(address,isConnected,"addressaddressaddress");      
       // if (days < 90) {
       //   return toast.error("Please Add More then 90 Days");
       // }
@@ -68,7 +68,6 @@ export default function StakingCard({ slug }) {
     getClaimedRewardsByUser();
   }, [address]);
 
-  console.log(stake, "stakestakestake");
 
   // Update stake value whenever selectedToken changes
   useEffect(() => {
@@ -196,7 +195,7 @@ export default function StakingCard({ slug }) {
             inputMode="numeric"
             name="stake"
             id="stake"
-            value={stake}
+            value={stake || ""}
             placeholder="0.0"
             onChange={(e) =>
               setStake(tab === "Unstake" ? null : e.target.value)
