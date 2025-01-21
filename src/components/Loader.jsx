@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const Loader = ({ isPresale = false }) => {
   // const text = "THANK YOU. HAVE A NICE DAY.";
-  const text = "LOADING - CDL COIN";
+  const text = "LOADING -- CDL DAPP --";
   const characters = text.split("");
 
   const radius = 80;
