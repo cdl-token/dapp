@@ -80,7 +80,7 @@ const MobileSidebar = () => {
               <div className="flex items-center gap-4 pt-2">
                 <Link href="#">{XIcon}</Link>
                 <Link href="#">{telegramIcon}</Link>
-                <Link href="#">{discordIcon}</Link>
+                <Link href="https://discord.gg/qt5D3EVtsR">{discordIcon}</Link>
               </div>
             </div>
           </div>
