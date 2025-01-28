@@ -42,8 +42,8 @@ const Sidebar = () => {
             Lightpaper
           </Link>
           <div className="flex items-center gap-4 pt-2">
-            <Link href="#">{XIcon}</Link>
-            <Link href="#">{telegramIcon}</Link>
+            <Link href="https://x.com/CDL_Token">{XIcon}</Link>
+            <Link href="https://t.me/CDL_Token">{telegramIcon}</Link>
             <Link href="https://discord.gg/qt5D3EVtsR">{discordIcon}</Link>
           </div>
         </div>
